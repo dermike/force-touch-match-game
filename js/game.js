@@ -1,4 +1,5 @@
 (function() {
+  var touch = null;
   var gamedata = {
     points: 0,
     gameOn: false,
@@ -30,6 +31,32 @@
       document.addEventListener('webkitmouseforcechanged', function(e) {
         game.updateForce(e.webkitForce);
       });
+      document.addEventListener('touchstart', getTouchForce);
+      document.addEventListener('touchmove', getTouchForce);
+      document.addEventListener('touchend', function(e) {
+        touch = null;
+      });
+      
+      function getTouchForce(e) {
+        if (e.target.id !== 'button') {
+          e.preventDefault();
+          touch = e.touches[0];
+          setTimeout(refreshForceValue.bind(touch), 10);
+        }
+      }
+      
+      function refreshForceValue() {
+        var touchEvent = this;
+        var forceValue = 0;
+        if (touchEvent) {
+          forceValue = touchEvent.force || 0;
+          setTimeout(refreshForceValue.bind(touch), 10);
+        } else {
+          forceValue = 0;
+        }
+
+        game.updateForce(forceValue*3);
+      }      
     },
     
     toggle: function() {
