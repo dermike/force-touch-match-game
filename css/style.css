@@ -80,16 +80,24 @@ body {
 #match-bar {
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 50%;
-  background-color: #000;
+  right: 50%;
+  width: 300px;
+  max-width: 50%;
+  background: #000 url('../img/ghost.png') no-repeat center center;
+  background-size: 128px;
   transition: height 0.8s;
 }
 
 #user-bar {
   position: absolute;
   bottom: 0;
-  right: 0;
-  width: 50%;
-  background-color: #fff;
+  left: 50%;
+  width: 300px;
+  max-width: 50%;
+  background: #fff url('../img/sword.jpg') no-repeat center center;
+  background-size: 100%;
 }
+
+#preload-01 { background: url(../img/dragon.png) no-repeat -9999px -9999px; }
+#preload-02 { background: url(../img/flower.png) no-repeat -9999px -9999px; }
+#preload-03 { background: url(../img/octopus.png) no-repeat -9999px -9999px; }

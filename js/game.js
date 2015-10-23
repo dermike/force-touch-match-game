@@ -4,7 +4,8 @@
     points: 0,
     gameOn: false,
     time: 0,
-    matchValue: null
+    matchValue: null,
+    monsters: ['img/dragon.png', 'img/flower.png', 'img/ghost.png', 'img/octopus.png']
   };
   
   var game = {
@@ -86,6 +87,10 @@
     },
     
     setMatch: function() {
+      var monster = gamedata.monsters[Math.floor(Math.random() * gamedata.monsters.length)];
+      game.matchbar.style.background = '#000 url("' + monster + '") no-repeat center center';
+      game.matchbar.style.backgroundSize = '128px';
+      
       game.userbar.style.height = '0%';
       gamedata.time = 0;
       gamedata.matchValue = (Math.random() * (85 - 1) + 1).toFixed(0);
