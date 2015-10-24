@@ -63,8 +63,8 @@ body {
   text-transform: uppercase;
 }
 
-#counter:after {
-  content: " ms";
+#hitpoints:after {
+  content: " hp";
   color: #dc7da6;
 }
 

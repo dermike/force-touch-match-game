@@ -5,16 +5,19 @@
     gameOn: false,
     time: 0,
     matchValue: null,
-    monsters: ['img/devil.jpg', 'img/dragon.jpg', 'img/goblin.jpg', 'img/orc.jpg', 'img/troll.jpg']
+    monsters: ['img/devil.jpg', 'img/dragon.jpg', 'img/goblin.jpg', 'img/orc.jpg', 'img/troll.jpg'],
+    hitpoints: [50, 60, 10, 20, 30],
+    currentHitpoint: null
   };
   
   var game = {
     button: document.getElementById('button'),
-    counter: document.getElementById('counter'),
+    hitpoints: document.getElementById('hitpoints'),
     points: document.getElementById('points'),
     gameinfo: document.getElementById('game-info'),
     matchbar: document.getElementById('match-bar'),
     userbar: document.getElementById('user-bar'),
+    userhit: document.getElementById('status'),
     
     init: function() {
       document.addEventListener('keydown', function(e) {
@@ -81,13 +84,20 @@
       game.points.innerHTML = gamedata.points;
       game.timer = setInterval(function() {
         gamedata.time += 100;
-        game.counter.innerHTML = gamedata.time;
+        
+        // enemy hits
+        if (gamedata.time % 3000 === 0) {
+          game.hit();
+        }
       }, 100);
       game.setMatch();
     },
     
     setMatch: function() {
-      var monster = gamedata.monsters[Math.floor(Math.random() * gamedata.monsters.length)];
+      var random = Math.floor(Math.random() * gamedata.monsters.length);
+      var monster = gamedata.monsters[random];
+      gamedata.currentHitpoint = gamedata.hitpoints[random];
+      game.hitpoints.innerHTML = gamedata.currentHitpoint;
       game.matchbar.style.background = '#000 url("' + monster + '") no-repeat center center';
       game.matchbar.style.backgroundSize = '128px';
       
@@ -110,7 +120,7 @@
         if (validvalue === gamedata.matchValue) {
           game.hit(true);
           var currentscore = parseInt(gamedata.points),
-              newscore = parseInt((10000/gamedata.time).toFixed(0));
+              newscore = parseInt((100000/gamedata.time).toFixed(0));
           if (newscore > 0) {
             gamedata.points = currentscore + newscore;
           }
@@ -125,12 +135,22 @@
       if (enemyhit) {
         apply = game.matchbar;
       } else {
-        apply = game.userbar;
+        apply = game.userhit;
+        gamedata.points -= gamedata.currentHitpoint;
+        game.points.innerHTML = gamedata.points;
+        if (gamedata.points < 0) {
+          game.gameOver();
+        }
       }
       apply.classList.add('hit');
       setTimeout(function() {
         apply.classList.remove('hit');
       }, 100);
+    },
+    
+    gameOver: function() {
+      game.gameinfo.innerHTML = '<div class="vertical-center"><h1>Game Over</h1></div>';
+      game.toggle();
     }
     
   };
