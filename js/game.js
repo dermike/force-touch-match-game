@@ -145,7 +145,7 @@
       apply.classList.add('hit');
       setTimeout(function() {
         apply.classList.remove('hit');
-      }, 100);
+      }, 200);
     },
     
     gameOver: function() {
