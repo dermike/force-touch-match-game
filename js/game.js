@@ -120,7 +120,7 @@
         if (validvalue === gamedata.matchValue) {
           game.hit(true);
           var currentscore = parseInt(gamedata.points),
-              newscore = parseInt((100000/gamedata.time).toFixed(0));
+              newscore = parseInt((10000/gamedata.time).toFixed(0));
           if (newscore > 0) {
             gamedata.points = currentscore + newscore;
           }
