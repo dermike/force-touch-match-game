@@ -135,7 +135,7 @@
       if (enemyhit) {
         apply = game.matchbar;
       } else {
-        apply = game.userhit;
+        apply = document.body;
         gamedata.points -= gamedata.currentHitpoint;
         game.points.innerHTML = gamedata.points;
         if (gamedata.points < 0) {
