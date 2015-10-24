@@ -1,10 +1,10 @@
 html {
   height: 100%;
+  background: url(../img/bg.jpg) no-repeat center center;
+  background-size: cover;
 }
 
 body {
-  background: linear-gradient(red, green);
-  background-repeat: no-repeat;
   font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.4;
 }

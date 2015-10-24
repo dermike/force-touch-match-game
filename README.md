@@ -7,3 +7,5 @@
 "The Kern Limited Edition Irish Sword" by Søren Niedziella ([CC BY 2.0](https://creativecommons.org/licenses/by/2.0/))
 
 "The Free Monsters" by Justin Nichol ([CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/))
+
+"Wizard Tower" by Joakim Persson ([CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/))
