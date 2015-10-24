@@ -6,4 +6,4 @@
 
 "The Kern Limited Edition Irish Sword" by Søren Niedziella ([CC BY 2.0](https://creativecommons.org/licenses/by/2.0/))
 
-"Monsters" by Eugene Artebasov ([CC BY-NC 2.0](https://creativecommons.org/licenses/by-nc/2.0/))
+"The Free Monsters" by Justin Nichol ([CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/))

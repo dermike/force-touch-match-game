@@ -5,7 +5,7 @@
     gameOn: false,
     time: 0,
     matchValue: null,
-    monsters: ['img/dragon.png', 'img/flower.png', 'img/ghost.png', 'img/octopus.png']
+    monsters: ['img/devil.jpg', 'img/dragon.jpg', 'img/goblin.jpg', 'img/orc.jpg', 'img/troll.jpg']
   };
   
   var game = {

@@ -81,9 +81,9 @@ body {
   position: absolute;
   bottom: 0;
   right: 50%;
-  width: 300px;
+  width: 250px;
   max-width: 50%;
-  background: #000 url('../img/ghost.png') no-repeat center center;
+  background: #000 url('../img/devil.jpg') no-repeat center center;
   background-size: 128px;
   transition: height 0.8s;
 }
@@ -92,12 +92,13 @@ body {
   position: absolute;
   bottom: 0;
   left: 50%;
-  width: 300px;
+  width: 250px;
   max-width: 50%;
   background: #fff url('../img/sword.jpg') no-repeat center center;
   background-size: 100%;
 }
 
-#preload-01 { background: url(../img/dragon.png) no-repeat -9999px -9999px; }
-#preload-02 { background: url(../img/flower.png) no-repeat -9999px -9999px; }
-#preload-03 { background: url(../img/octopus.png) no-repeat -9999px -9999px; }
+#preload-01 { background: url(../img/dragon.jpg) no-repeat -9999px -9999px; }
+#preload-02 { background: url(../img/goblin.jpg) no-repeat -9999px -9999px; }
+#preload-03 { background: url(../img/orc.jpg) no-repeat -9999px -9999px; }
+#preload-04 { background: url(../img/troll.jpg) no-repeat -9999px -9999px; }
