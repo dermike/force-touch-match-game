@@ -108,6 +108,7 @@
           game.userbar.style.height = '0%';
         }
         if (validvalue === gamedata.matchValue) {
+          game.hit(true);
           var currentscore = parseInt(gamedata.points),
               newscore = parseInt((10000/gamedata.time).toFixed(0));
           if (newscore > 0) {
@@ -117,6 +118,19 @@
           game.setMatch();
         }
       }
+    },
+    
+    hit: function(enemyhit) {
+      var apply = null;
+      if (enemyhit) {
+        apply = game.matchbar;
+      } else {
+        apply = game.userbar;
+      }
+      apply.classList.add('hit');
+      setTimeout(function() {
+        apply.classList.remove('hit');
+      }, 100);
     }
     
   };

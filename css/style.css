@@ -98,6 +98,11 @@ body {
   background-size: 100%;
 }
 
+.hit {
+  -webkit-filter: invert();
+  filter: invert();
+}
+
 #preload-01 { background: url(../img/dragon.jpg) no-repeat -9999px -9999px; }
 #preload-02 { background: url(../img/goblin.jpg) no-repeat -9999px -9999px; }
 #preload-03 { background: url(../img/orc.jpg) no-repeat -9999px -9999px; }
