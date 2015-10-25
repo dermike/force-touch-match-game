@@ -51,7 +51,8 @@
     hitpoints: [50, 60, 10, 20, 30],
     attackSpeed: [2500, 3000, 1000, 1500, 1800],
     currentAttackSpeed: null,
-    currentHitpoint: null
+    currentHitpoint: null,
+    protection: true
   };
   
   var game = {
@@ -134,12 +135,13 @@
     start: function() {
       gamedata.points = 0;
       gamedata.time = 0;
+      gamedata.protection = true;
       game.points.innerHTML = gamedata.points;
       game.timer = setInterval(function() {
         gamedata.time += 100;
         
         // enemy hits
-        if (gamedata.points > gamedata.currentHitpoint) {
+        if (gamedata.points > gamedata.currentHitpoint || !gamedata.protection) {
           if (gamedata.time % gamedata.currentAttackSpeed === 0) {
             game.hit();
           }
@@ -183,6 +185,10 @@
               newscore = parseInt((10000/gamedata.time).toFixed(0));
           if (newscore > 0) {
             gamedata.points = currentscore + newscore;
+          }
+          if (gamedata.points > 99) {
+            // removes limitation to enemy attack speed
+            gamedata.protection = false;
           }
           game.points.innerHTML = gamedata.points;
           game.setMatch();
