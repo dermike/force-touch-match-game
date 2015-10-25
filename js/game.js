@@ -167,6 +167,7 @@
       gamedata.time = 0;
       gamedata.matchValue = (Math.random() * (85 - 1) + 1).toFixed(0);
       game.matchbar.style.height = gamedata.matchValue + '%';
+      touch = null;
     },
     
     updateForce: function(force) {
