@@ -9,3 +9,7 @@
 "The Free Monsters" by Justin Nichol ([CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/))
 
 "Wizard Tower" by Joakim Persson ([CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/))
+
+### Sounds
+
+["RPG Sound Pack"](http://opengameart.org/content/rpg-sound-pack) ([CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/))

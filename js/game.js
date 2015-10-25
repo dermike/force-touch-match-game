@@ -1,5 +1,47 @@
 (function() {
-  var touch = null;
+  var context;
+  var touch;
+  try {
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    context = new AudioContext();
+  } catch(e) {
+    throw new Error('Web Audio API not supported.');
+  }
+
+  function playSound(buffer) {
+    var source = context.createBufferSource();
+    source.buffer = buffer;
+    source.connect(context.destination);
+    source.start(0);
+  }
+  
+  var sounds = {
+    sword: {
+      src: 'sound/sword.mp3'
+    },
+    userhit: {
+      src: 'sound/userhit.mp3'
+    },
+    enemyhit: {
+      src: 'sound/enemyhit.mp3'
+    }
+  };
+  
+  function loadSoundObj(obj) {
+    var request = new XMLHttpRequest();
+    request.open('GET', obj.src, true);
+    request.responseType = 'arraybuffer';
+
+    request.onload = function() {
+      context.decodeAudioData(request.response, function(buffer) {
+        obj.buffer = buffer;
+      }, function(err) {
+        throw new Error(err);
+      });
+    }
+    request.send();
+  }
+  
   var gamedata = {
     points: 0,
     gameOn: false,
@@ -20,6 +62,10 @@
     userhit: document.getElementById('status'),
     
     init: function() {
+      loadSoundObj(sounds.enemyhit);
+      loadSoundObj(sounds.sword);
+      loadSoundObj(sounds.userhit);
+      
       document.addEventListener('keydown', function(e) {
         if (e.keyCode === 27 || e.keyCode === 83) {
           game.toggle(); 
@@ -30,6 +76,7 @@
       });
       document.addEventListener('webkitmouseforcewillbegin', function(e) {
         e.preventDefault();
+        playSound(sounds.sword.buffer);
         game.updateForce(e.webkitForce);
       });
       document.addEventListener('webkitmouseforcechanged', function(e) {
@@ -44,6 +91,9 @@
       function getTouchForce(e) {
         if (e.target.id !== 'button') {
           e.preventDefault();
+          if (e.type === 'touchstart' && game.gameOn) {
+            playSound(sounds.sword.buffer);
+          }          
           touch = e.touches[0];
           setTimeout(refreshForceValue.bind(touch), 10);
         }
@@ -71,6 +121,7 @@
         game.gameinfo.classList.remove('hide');
         game.button.innerHTML = 'Start';
       } else {
+        playSound(sounds.sword.buffer);
         game.gameOn = true;
         game.gameinfo.classList.add('hide');
         game.button.innerHTML = 'Stop';
@@ -134,8 +185,10 @@
       var apply = null;
       if (enemyhit) {
         apply = game.matchbar;
+        playSound(sounds.enemyhit.buffer);
       } else {
         apply = document.body;
+        playSound(sounds.userhit.buffer);
         gamedata.points -= gamedata.currentHitpoint;
         game.points.innerHTML = gamedata.points;
         if (gamedata.points < 0) {
