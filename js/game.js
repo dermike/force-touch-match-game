@@ -49,6 +49,8 @@
     matchValue: null,
     monsters: ['img/devil.jpg', 'img/dragon.jpg', 'img/goblin.jpg', 'img/orc.jpg', 'img/troll.jpg'],
     hitpoints: [50, 60, 10, 20, 30],
+    attackSpeed: [2500, 3000, 1000, 1500, 1800],
+    currentAttackSpeed: null,
     currentHitpoint: null
   };
   
@@ -137,8 +139,14 @@
         gamedata.time += 100;
         
         // enemy hits
-        if (gamedata.time % 3000 === 0) {
-          game.hit();
+        if (gamedata.points > gamedata.currentHitpoint) {
+          if (gamedata.time % gamedata.currentAttackSpeed === 0) {
+            game.hit();
+          }
+        } else {
+          if (gamedata.time % 3000 === 0) {
+            game.hit();
+          }
         }
       }, 100);
       game.setMatch();
@@ -148,6 +156,7 @@
       var random = Math.floor(Math.random() * gamedata.monsters.length);
       var monster = gamedata.monsters[random];
       gamedata.currentHitpoint = gamedata.hitpoints[random];
+      gamedata.currentAttackSpeed = gamedata.attackSpeed[random];
       game.hitpoints.innerHTML = gamedata.currentHitpoint;
       game.matchbar.style.background = '#000 url("' + monster + '") no-repeat center center';
       game.matchbar.style.backgroundSize = '128px';
