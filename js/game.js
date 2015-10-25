@@ -19,6 +19,9 @@
     sword: {
       src: 'sound/sword.mp3'
     },
+    swing: {
+      src: 'sound/swing.mp3'
+    },
     userhit: {
       src: 'sound/userhit.mp3'
     },
@@ -68,6 +71,7 @@
       loadSoundObj(sounds.enemyhit);
       loadSoundObj(sounds.sword);
       loadSoundObj(sounds.userhit);
+      loadSoundObj(sounds.swing);
       
       document.addEventListener('keydown', function(e) {
         if (e.keyCode === 27 || e.keyCode === 83) {
@@ -95,7 +99,7 @@
         if (e.target.id !== 'button') {
           e.preventDefault();
           if (e.type === 'touchstart' && game.gameOn) {
-            playSound(sounds.sword.buffer);
+            playSound(sounds.swing.buffer);
           }          
           touch = e.touches[0];
           setTimeout(refreshForceValue.bind(touch), 10);
